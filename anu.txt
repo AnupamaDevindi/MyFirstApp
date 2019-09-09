@@ -1,0 +1,96 @@
+use CeyBank;
+
+CREATE TABLE [User]
+(
+    	User_ID int NOT NULL,
+		Username  varchar(20) NOT NULL,
+    	First_name varchar(20) NOT NULL,
+		Last_name varchar(20) NOT NULL,
+		Email varchar(50) NOT NULL,
+    	User_type varchar(20) NOT NULL,
+    	User_role varchar(20) NOT NULL,
+    	Contact_no int NOT NULL,
+		Status varchar(20) NOT NULL,
+    	Password binary(64) NOT NULL,
+		CreatedBy int NOT NULL,
+		CreatedDate datetime NOT NULL,
+		lastModifiedBy int,
+		lastModifiedate datetime,
+		CONSTRAINT [PK_ User] PRIMARY KEY (User_ID),
+		CONSTRAINT [UC_ User] UNIQUE (Username)
+);
+
+Select * From [User];
+
+ALTER TABLE [User]
+ALTER COLUMN  Password varchar(50); 
+
+DELETE FROM [User];
+
+SELECT Username,Password FROM [User] WHERE Status = 'ACTIVE';
+
+CREATE TABLE [Roles]
+(
+		Role_ID int NOT NULL,
+    	User_role int NOT NULL,
+    	CreatedBy int NOT NULL,
+		CreatedDate datetime NOT NULL,
+		lastModifiedBy int,
+		lastModifiedate datetime,
+	    CONSTRAINT [PK_ Roles] PRIMARY KEY (Role_ID),
+	    CONSTRAINT [FK_ Roles] FOREIGN KEY (User_role)
+        REFERENCES [User](User_ID)
+);
+
+
+CREATE TABLE [Function]
+(
+		Function_ID int NOT NULL,
+		Function_name varchar(50) NOT NULL,
+		CreatedBy int NOT NULL,
+		CreatedDate datetime NOT NULL,
+		lastModifiedBy int,
+		lastModifiedate datetime,
+		CONSTRAINT [PK_ Function] PRIMARY KEY (Function_ID)
+
+);
+
+
+CREATE TABLE [Function_role]
+(
+		Function_ID int NOT NULL,
+		Role_ID int NOT NULL,
+		CreatedBy int NOT NULL,
+		CreatedDate datetime NOT NULL,
+		lastModifiedBy int,
+		lastModifiedate datetime,
+		CONSTRAINT [PK_ Function_role] PRIMARY KEY (Role_ID ,Function_ID)
+);
+
+
+CREATE TABLE [User_login]
+(
+		Login_id int NOT NULL,
+		User_ID int NOT NULL,
+		Status varchar(6) NOT NULL,
+		Login_date datetime NOT NULL,
+		Logout_date datetime NOT NULL,
+		CONSTRAINT [PK_ User_login] PRIMARY KEY (Login_id)
+);
+
+
+
+
+
+
+ int id;
+    String fname;
+    String lname;         
+    String email; 
+    String userType;         
+    String userRole;         
+    int contact;         
+    String status;
+    String username;        
+    String password;
+    int cid;

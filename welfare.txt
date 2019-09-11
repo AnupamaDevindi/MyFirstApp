@@ -1,0 +1,15 @@
+INTERFACES
+
+forgotten password
+	email address
+	pf number
+reset password
+	current
+	new pw
+	confirm new
+register
+role based
+index
+account setting
+search
+
